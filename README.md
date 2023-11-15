@@ -33,38 +33,27 @@ from scipy import stats
 import numpy as np
 df=pd.read_csv("Data_to_Transform.csv")
 df
-
 df.skew()
-
 np.log(df["Highly Positive Skew"])
-
 np.reciprocal(df["Moderate Positive Skew"])
-
 np.sqrt(df["Highly Positive Skew"])
-
 np.square(df["Highly Positive Skew"])
-
 df["Highly Positive Skew_boxcox"],parameters=stats.boxcox(df["Highly Positive Skew"])
 df
-
 df["Moderate Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Moderate Negative Skew"])
 df
-
 from sklearn.preprocessing import QuantileTransformer
 qt=QuantileTransformer(output_distribution='normal')
 df["Moderate Negative Skew_1"]=qt.fit_transform(df[["Moderate Negative Skew"]])
 df
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
 import scipy.stats as stats
 sm.qqplot(df['Moderate Negative Skew'],line='45')
 plt.show()
-
 sm.qqplot(df['Moderate Negative Skew_1'],line='45')
 plt.show()
-
 df['Highly Negative Skew_1']=qt.fit_transform(df[["Highly Negative Skew"]])
 sm.qqplot(df['Highly Negative Skew'],line='45')
 plt.show()
@@ -81,13 +70,10 @@ plt.show()
 
 ![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/722f9e2b-eb50-4ba5-85cb-96f64290f24e)
 
-![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/4586d3d8-2333-4cb6-8645-8b7498167e44)
 
-![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/617a41e5-d768-4080-9bb9-962302331b94)
 
 ![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/0d3c68e8-5a33-4ad3-9ea8-0b2c405980ca)
 
-![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/1f19fde8-ca41-43e9-a117-a3aa9770d32c)
 
 ![image](https://github.com/soundariyan18/ODD2023-Datascience-Ex06/assets/119393307/a88dcd76-2cb3-4012-83ac-1a41d89ab3ad)
 
